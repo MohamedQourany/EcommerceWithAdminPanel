@@ -247,7 +247,7 @@ const Home = () => {
             <Flex
               justify={"space-evenly"}
               width={"100%"}
-              wrap
+              flexWrap={"wrap"}
               flexDirection={"row"}
             >
               {products?.map((product) => (

@@ -175,7 +175,6 @@ const Navbar = () => {
           Cart
         </Button>
       ),
-      key: "alipay",
     },
     {
       label: onLogin(),
