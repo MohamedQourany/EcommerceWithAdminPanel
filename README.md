@@ -1,5 +1,6 @@
-Admin username : admin@ecommerce.com
-Admin password : admin1234
+<h1>Admin username : admin@ecommerce.com
+</h1>
+<h1>Admin password : admin1234</h1>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
