@@ -184,17 +184,17 @@ const Navbar = () => {
   const handleOk = () => {
     setIsModalOpen(false);
   };
+  const [top, setTop] = useState(0);
   const cart = useSelector((state) => state.cart);
   return (
-    <Affix>
+    <Affix style={{ zIndex: 1 }} offsetTop={top}>
       <Header>
-        <Row align={"middle"} justify={"space-between"}>
+        <Flex align={"middle"} justify={"space-between"}>
           <Col>
             <Link to={"/"}>
               <Button type={"link"}>Ecommerce</Button>
             </Link>
           </Col>
-          <Col></Col>
           <Button className="drawer-btn" type="link" onClick={toggleDrawer}>
             ☰
           </Button>
@@ -232,7 +232,7 @@ const Navbar = () => {
               </Menu.Item>
             ))}
           </Menu>
-        </Row>
+        </Flex>
         <Modal open={loginModalOpen} onOk={handleLoginClose}>
           <Form>
             <Typography.Title level={5}>Login or SignUp</Typography.Title>

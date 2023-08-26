@@ -12,6 +12,7 @@ import {
   Layout,
   Modal,
   Row,
+  Skeleton,
   Space,
   Spin,
   Typography,
@@ -28,7 +29,6 @@ import { Link } from "react-router-dom";
 import { Content } from "antd/es/layout/layout";
 import {
   chakra,
-  useColorModeValue,
   Box,
   Flex,
   HStack,
@@ -42,6 +42,8 @@ import {
   Container,
   Icon,
 } from "@chakra-ui/react";
+import { DottedBox } from "./Icons";
+import { Hero } from "./Hero";
 const Home = () => {
   const [products, setProducts] = useState();
   const dispatch = useDispatch();
@@ -158,83 +160,10 @@ const Home = () => {
 
   const [loading, setLoading] = useState(true);
   return (
-    <Layout>
+    <Layout className="hero">
       {!loading ? (
         <Content>
-          <Box pb={8}>
-            <Stack
-              pos="relative"
-              bgGradient={`linear(to-l, blue.800, blue.600 , cyan.600)`}
-              height="250px"
-              w="100%"
-            ></Stack>
-            <Box
-              p={4}
-              isolation="isolate"
-              zIndex={3}
-              mt="-10rem"
-              marginInline="auto"
-            >
-              <Box p={{ base: 4, sm: 8 }} overflow="hidden" rounded="2xl">
-                <Stack
-                  pos="relative"
-                  zIndex={1}
-                  direction="column"
-                  spacing={5}
-                  textAlign="left"
-                  bg={"white"}
-                  padding={20}
-                  borderRadius={"3xl"}
-                >
-                  <chakra.h1 fontSize="4xl" lineHeight={1.2} fontWeight="bold">
-                    Explore Ecommerce
-                  </chakra.h1>
-                  <chakra.h1 color="gray.400" fontSize="xl" lineHeight={1.2}>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Quos quidem velit voluptatum? Minima fugiat debitis
-                    laudantium assumenda eum sunt dolores expedita ad, maxime
-                    reprehenderit pariatur, doloremque qui cum, labore officiis.
-                  </chakra.h1>
-
-                  <Stack direction={{ base: "column", md: "row" }} spacing={3}>
-                    <chakra.button
-                      h={10}
-                      px={6}
-                      color="white"
-                      fontSize="md"
-                      variant="solid"
-                      rounded="md"
-                      lineHeight={1}
-                      bg="blue.400"
-                      _hover={{ bg: "blue.600" }}
-                    >
-                      View Shop
-                    </chakra.button>
-                    <Button
-                      as={Link}
-                      href="#"
-                      rounded="md"
-                      colorscheme="gray"
-                      variant="solid"
-                    >
-                      FAQ
-                    </Button>
-                    <Button
-                      as={Link}
-                      href="#"
-                      rounded="md"
-                      color="white"
-                      variant="solid"
-                      colorscheme="purple"
-                      _hover={{ bg: "purple.600" }}
-                    >
-                      Newsletter
-                    </Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </Box>
-          </Box>
+          <Hero />
           <Divider mt={20} mb={20} />
           <Flex
             direction={"column"}
@@ -244,8 +173,9 @@ const Home = () => {
             alignItems={"center"}
           >
             <Typography.Title>Top Selling</Typography.Title>
+
             <Flex
-              justify={"space-between"}
+              justify={"space-evenly"}
               width={"100%"}
               flexWrap={"wrap"}
               flexDirection={"row"}
@@ -272,125 +202,6 @@ const Home = () => {
             </Flex>
           </Flex>
           <Divider mt={50} mb={50} />
-
-          <Container p={{ base: 5, md: 10 }}>
-            <chakra.h3
-              fontSize="4xl"
-              fontWeight="bold"
-              mb={20}
-              textAlign="center"
-            >
-              Everything you need and more...
-            </chakra.h3>
-            <SimpleGrid
-              columns={{ base: 1, sm: 2, md: 3 }}
-              placeItems="center"
-              spacing={10}
-              mb={4}
-            >
-              {features.map((feature, index) => (
-                <Box
-                  key={index}
-                  p={6}
-                  rounded="lg"
-                  textAlign="center"
-                  pos="relative"
-                >
-                  <Flex
-                    p={2}
-                    w="max-content"
-                    color="white"
-                    bgGradient="linear(to-br, #228be6, #15aabf)"
-                    rounded="md"
-                    marginInline="auto"
-                    pos="absolute"
-                    left={0}
-                    right={0}
-                    top="-1.5rem"
-                    boxShadow="lg"
-                  >
-                    {feature.icon}
-                  </Flex>
-                  <chakra.h3 fontWeight="semibold" fontSize="2xl" mt={6}>
-                    {feature.heading}
-                  </chakra.h3>
-                  <Text fontSize="md" mt={4}>
-                    {feature.content}
-                  </Text>
-                  <Link href="#" mt={4} fontSize="sm" color="blue.400">
-                    Learn more →
-                  </Link>
-                </Box>
-              ))}
-            </SimpleGrid>
-          </Container>
-          <Container p={{ base: 4, sm: 10 }}>
-            <Stack
-              direction={{ base: "column", md: "row" }}
-              justifyContent="space-between"
-            >
-              <Stack spacing={4}>
-                <chakra.h1 fontSize="2xl" lineHeight={1.2} fontWeight="bold">
-                  Our ultimate goal
-                </chakra.h1>
-                <Text fontSize="md" color="gray.400">
-                  We aim high trying to design the most effective and efficient
-                  tool for building UIs, for developers and designers. ChakraUI
-                  started back in 2019, to unify React. Since then, we've become
-                  a community of over 2M developers from every corner of the
-                  world.
-                </Text>
-
-                <Stack spacing={2}>
-                  <Text fontSize="md" color="gray.400">
-                    We plan on doing all that cultivating our values:
-                  </Text>
-                  {planList.map((data, index) => (
-                    <HStack
-                      key={index}
-                      alignItems="center"
-                      spacing={1}
-                      fontSize="md"
-                    >
-                      <Icon
-                        as={AiFillCheckCircle}
-                        w={4}
-                        h={4}
-                        color="blue.400"
-                      />
-                      <Text fontSize="md">{data}</Text>
-                    </HStack>
-                  ))}
-                </Stack>
-              </Stack>
-              <Stack>
-                <SimpleGrid
-                  columns={2}
-                  spacing={5}
-                  pt={8}
-                  pl={{ base: 0, md: 10 }}
-                  margin="auto 0"
-                >
-                  {statData.map((data, index) => (
-                    <Stack
-                      key={index}
-                      pl={3}
-                      py={1}
-                      pr={1}
-                      borderLeft="2px solid"
-                      borderLeftColor="blue.400"
-                      justifyContent="space-between"
-                    >
-                      <Box fontSize="2xl" fontWeight="bold" color="blue.400">
-                        {data.score}
-                      </Box>
-                      <Text fontSize="md">{data.label}</Text>
-                    </Stack>
-                  ))}
-                </SimpleGrid>
-              </Stack>
-            </Stack>
-          </Container>
         </Content>
       ) : (
         <Flex

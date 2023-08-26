@@ -47,3 +47,6 @@
 /* const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   }; */
+.hero {
+  background: var(--black-5, rgba(30, 40, 50, 0.05));
+}
