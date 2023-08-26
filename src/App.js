@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Admin from "./admin";
+import { db } from "./firebase";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Navbar from "./Navbar";
+import { Layout, Space } from "antd";
+import Error from "./Error";
 function App() {
+  const User = localStorage.getItem("user");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Space direction="vertical" style={{ width: "100%" }} size={[0, 48]}>
+      <Layout>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {User === "admin@ecommerce.com" ? (
+              <Route path="/admin" element={<Admin />} />
+            ) : (
+              <Route path="/admin" element={<Error />} />
+            )}
+          </Routes>
+        </BrowserRouter>
+      </Layout>
+    </Space>
   );
 }
 
