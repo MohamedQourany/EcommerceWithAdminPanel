@@ -245,13 +245,13 @@ const Home = () => {
           >
             <Typography.Title>Top Selling</Typography.Title>
             <Flex
-              justify={"space-evenly"}
+              justify={"space-between"}
               width={"100%"}
               flexWrap={"wrap"}
               flexDirection={"row"}
             >
               {products?.map((product) => (
-                <Card key={product?.id} padding={10} width={350}>
+                <Card key={product?.id} padding={10} width={300} mb={20}>
                   <CardHeader>
                     <Typography.Title level={5}>
                       {product?.productName}
