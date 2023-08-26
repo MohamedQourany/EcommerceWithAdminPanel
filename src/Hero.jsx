@@ -36,9 +36,6 @@ export const Hero = () => (
       >
         <Stack spacing={{ base: "8", lg: "10" }}>
           <Stack spacing={{ base: "2", lg: "4" }}>
-            <Heading size="xl" color={useColorModeValue("red.500", "red.300")}>
-              Misguided
-            </Heading>
             <Heading size="xl" fontWeight="normal">
               One Stop Shop
             </Heading>
@@ -70,7 +67,7 @@ export const Hero = () => (
         />
         <Image
           display={{ base: "none", sm: "initial" }}
-          src="https://images.unsplash.com/photo-1589156206699-bc21e38c8a7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
+          src="https://www.att.com/scmsassets/global/devices/phones/apple/apple-iphone-14-pro/defaultimage/deep-purple-hero-zoom.png"
           alt="Lovely Image"
           fallback={<Skeleton />}
           maxH="450px"
