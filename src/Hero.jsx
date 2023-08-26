@@ -40,7 +40,7 @@ export const Hero = () => (
               Misguided
             </Heading>
             <Heading size="xl" fontWeight="normal">
-              Refresh your wardrobe
+              One Stop Shop
             </Heading>
           </Stack>
           <HStack spacing="3">
@@ -60,7 +60,7 @@ export const Hero = () => (
       </Box>
       <Flex flex="1" overflow="hidden">
         <Image
-          src="https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
+          src="/iPhone-13-Pro-Max.png"
           alt="Lovely Image"
           fallback={<Skeleton />}
           maxH="450px"
