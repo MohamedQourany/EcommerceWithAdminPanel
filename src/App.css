@@ -11,7 +11,12 @@
     display: none;
   }
 }
-
+.search {
+  background: #ffffff;
+  color: rgb(0, 0, 0) !important;
+  border-radius: 10px;
+  max-width: 300px;
+}
 /* For screens less than 768px */
 @media (max-width: 767px) {
   .mobile-menu {

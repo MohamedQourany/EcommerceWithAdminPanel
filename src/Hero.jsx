@@ -10,7 +10,9 @@ import {
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
+import Typography from "antd/es/typography/Typography";
 import { FaArrowRight } from "react-icons/fa";
+import Carousel from "./Slider";
 
 export const Hero = () => (
   <Box
@@ -22,6 +24,7 @@ export const Hero = () => (
     <Stack
       direction={{ base: "column-reverse", lg: "row" }}
       spacing={{ base: "0", lg: "20" }}
+      align={"center"}
     >
       <Box
         width={{ lg: "sm" }}
@@ -30,29 +33,36 @@ export const Hero = () => (
           base: useColorModeValue("red.50", "gray.700"),
           lg: "transparent",
         }}
+        flexWrap={"wrap"}
         mx={{ base: "6", md: "8", lg: "0" }}
         px={{ base: "6", md: "8", lg: "0" }}
         py={{ base: "6", md: "8", lg: "12" }}
       >
         <Stack spacing={{ base: "8", lg: "10" }}>
           <Stack spacing={{ base: "2", lg: "4" }}>
-            <Heading size="xl" fontWeight="normal">
+            <Heading size="2xl" fontWeight="extrabold">
               One Stop Shop
             </Heading>
           </Stack>
-          <HStack spacing="3">
+          <Flex flexDirection={"column"} spacing="3">
             <Link
               color={useColorModeValue("red.500", "red.300")}
               fontWeight="bold"
               fontSize="lg"
             >
-              Discover now
+              <Typography.Title>Discover now</Typography.Title>
             </Link>
+            <Typography.Text>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime
+              excepturi magni dolore vitae corrupti. Perferendis minima adipisci
+              tenetur nesciunt tempora doloribus dolore minus maiores illo. In
+              ad repudiandae fugiat molestiae!
+            </Typography.Text>
             <Icon
               color={useColorModeValue("red.500", "red.300")}
               as={FaArrowRight}
             />
-          </HStack>
+          </Flex>
         </Stack>
       </Box>
       <Flex flex="1" overflow="hidden">
@@ -62,16 +72,8 @@ export const Hero = () => (
           fallback={<Skeleton />}
           maxH="450px"
           minW="300px"
-          objectFit="cover"
+          objectFit="contain"
           flex="1"
-        />
-        <Image
-          display={{ base: "none", sm: "initial" }}
-          src="https://www.att.com/scmsassets/global/devices/phones/apple/apple-iphone-14-pro/defaultimage/deep-purple-hero-zoom.png"
-          alt="Lovely Image"
-          fallback={<Skeleton />}
-          maxH="450px"
-          objectFit="cover"
         />
       </Flex>
     </Stack>

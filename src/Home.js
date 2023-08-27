@@ -173,7 +173,6 @@ const Home = () => {
             alignItems={"center"}
           >
             <Typography.Title>Top Selling</Typography.Title>
-
             <Flex
               justify={"space-evenly"}
               width={"100%"}

@@ -140,7 +140,7 @@ const Navbar = () => {
       );
       return (
         <Flex align={"center"}>
-          <h1>Hello, admin</h1>
+          <h2>Hello, Admin</h2>
           <Dropdown overlay={adminMenu}>
             <Button>Admin Options</Button>
           </Dropdown>{" "}
@@ -188,13 +188,11 @@ const Navbar = () => {
   const cart = useSelector((state) => state.cart);
   return (
     <Affix style={{ zIndex: 1 }} offsetTop={top}>
-      <Header>
-        <Flex align={"middle"} justify={"space-between"}>
-          <Col>
-            <Link to={"/"}>
-              <Button type={"link"}>Ecommerce</Button>
-            </Link>
-          </Col>
+      <Flex justify={"space-between"} align={"center"} bg={"white"}>
+        <Flex alignItems={"center"} justify={"space-evenly"} width={"100%"}>
+          <Link to={"/"}>
+            <Typography.Text>Ecommerce</Typography.Text>
+          </Link>
           <Button className="drawer-btn" type="link" onClick={toggleDrawer}>
             ☰
           </Button>
@@ -205,11 +203,11 @@ const Navbar = () => {
             closable={false}
             onClose={toggleDrawer}
             open={isDrawerOpen}
-            theme="dark"
+            theme="light"
           >
             <Menu
               mode="vertical"
-              theme="dark"
+              theme="light"
               expandIcon={<AppstoreOutlined />}
             >
               {items.map((item) => (
@@ -219,10 +217,10 @@ const Navbar = () => {
               ))}
             </Menu>
           </Drawer>
+          <Input.Search className="search" placeholder="Search for Products" />
           <Menu
             className="menu"
             mode="horizontal"
-            theme="dark"
             expandIcon={<AppstoreOutlined />}
             disabledOverflow
           >
@@ -290,7 +288,8 @@ const Navbar = () => {
             ))}
           </Flex>
         </Modal>
-      </Header>
+      </Flex>
+      <Divider />
     </Affix>
   );
 };
