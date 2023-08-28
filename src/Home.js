@@ -184,6 +184,7 @@ const Home = () => {
                 direction={"row"}
                 justify={"space-evenly"}
                 align={"center"}
+                wrap={"wrap"}
               >
                 <Flex direction={"column"} width={600}>
                   <Typography.Title>{item?.Title}</Typography.Title>
