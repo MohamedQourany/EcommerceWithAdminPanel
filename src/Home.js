@@ -14,6 +14,7 @@ import {
   Space,
   Spin,
   Typography,
+  message,
 } from "antd";
 import {
   addItem,
@@ -77,6 +78,7 @@ const Home = () => {
   const addToCart = (product) => {
     dispatch(addItem(product));
     dispatch(calculateTotal());
+    message?.success(product?.productName + " is Added to cart");
   };
   const features = [
     {
