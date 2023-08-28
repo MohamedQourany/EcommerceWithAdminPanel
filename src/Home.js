@@ -176,72 +176,76 @@ const Home = () => {
   return (
     <Layout className="hero">
       {!loading ? (
-        <Flex direction={"column"} align={"center"}>
-          <Box mt={20}>
-            {Hero?.map((item) => (
-              <Flex
-                width={"100vw"}
-                direction={"row"}
-                justify={"space-evenly"}
-                align={"center"}
-                wrap={"wrap"}
-              >
-                <Flex direction={"column"} width={600}>
-                  <Typography.Title>{item?.Title}</Typography.Title>
-                  <Typography.Text>{item?.Desc}</Typography.Text>
-                  <Button
-                    width={150}
-                    alignSelf={"center"}
-                    type={"submit"}
-                    color={"ActiveCaption"}
-                    bg={"blue.500"}
-                    mt={5}
-                  >
-                    <Link to={"/Shop"}>Shop Now</Link>
-                  </Button>
+        <>
+          <Flex direction={"column"} align={"center"}>
+            <Flex mt={20}>
+              {Hero?.map((item) => (
+                <Flex
+                  width={"100vw"}
+                  direction={"row"}
+                  justify={"space-evenly"}
+                  align={"center"}
+                  wrap={"wrap"}
+                >
+                  <Flex direction={"column"} width={600}>
+                    <Typography.Title>{item?.Title}</Typography.Title>
+                    <Typography.Text>{item?.Desc}</Typography.Text>
+                    <Button
+                      width={150}
+                      alignSelf={"center"}
+                      type={"submit"}
+                      color={"ActiveCaption"}
+                      bg={"blue.500"}
+                      mt={5}
+                    >
+                      <Link to={"/Shop"}>Shop Now</Link>
+                    </Button>
+                  </Flex>
+                  <Image src={item?.HeroBg} preview={false} height={400} />
                 </Flex>
-                <Image src={item?.HeroBg} preview={false} height={400} />
-              </Flex>
-            ))}
-          </Box>
-          <Divider mt={20} mb={20} />
-          <Flex
-            direction={"column"}
-            alignContent={"center"}
-            justifyContent={"center"}
-            justifyItems={"center"}
-            alignItems={"center"}
-          >
-            <Typography.Title>Top Selling</Typography.Title>
-            <Flex
-              justify={"space-evenly"}
-              width={"100%"}
-              flexWrap={"wrap"}
-              flexDirection={"row"}
-            >
-              {products?.map((product) => (
-                <Card key={product?.id} padding={10} width={300} mb={20}>
-                  <CardHeader>
-                    <Typography.Title level={5}>
-                      {product?.productName}
-                    </Typography.Title>
-                  </CardHeader>
-                  <Image src={product?.image} />
-                  <CardFooter>
-                    <Flex direction={"column"}>
-                      <Text noOfLines={3}>{product?.description}</Text>
-                      <Text fontWeight={"bold"}>{product?.price} EGP</Text>
-                    </Flex>
-                  </CardFooter>
-                  <Button onClick={() => addToCart(product)}>
-                    Add To Cart
-                  </Button>
-                </Card>
               ))}
             </Flex>
+            <Divider mt={20} mb={20} />
+            <Flex
+              direction={"column"}
+              alignContent={"center"}
+              justifyContent={"center"}
+              justifyItems={"center"}
+              alignItems={"center"}
+            >
+              <Typography.Title>Top Selling</Typography.Title>
+              <Flex
+                justify={"space-evenly"}
+                width={"100%"}
+                flexWrap={"wrap"}
+                flexDirection={"row"}
+              >
+                {products?.map((product) => (
+                  <Card key={product?.id} padding={10} width={300} mb={20}>
+                    <CardHeader>
+                      <Typography.Title level={5}>
+                        {product?.productName}
+                      </Typography.Title>
+                    </CardHeader>
+                    <Image src={product?.image} />
+                    <CardFooter>
+                      <Flex direction={"column"}>
+                        <Text noOfLines={3}>{product?.description}</Text>
+                        <Text fontWeight={"bold"}>{product?.price} EGP</Text>
+                      </Flex>
+                    </CardFooter>
+                    <Button onClick={() => addToCart(product)}>
+                      Add To Cart
+                    </Button>
+                  </Card>
+                ))}
+              </Flex>
+            </Flex>
+            <Divider mt={50} mb={50} />
           </Flex>
-          <Divider mt={50} mb={50} />
-        </Flex>
+          <Testimonial />
+          <Rating />
+        </>
       ) : (
         <Flex
           width={"100%"}
@@ -252,8 +256,6 @@ const Home = () => {
           <Spin />
         </Flex>
       )}
-      <Testimonial />
-      <Rating />
     </Layout>
   );
 };
