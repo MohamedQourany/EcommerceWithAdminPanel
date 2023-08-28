@@ -1,36 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  collection,
-  addDoc,
-  getDocs,
-  updateDoc,
-  doc,
-  deleteDoc,
-} from "firebase/firestore";
-import { db } from "./firebase";
+import React from "react";
 import ProductsDashboard from "./Products";
-import { Layout, Menu } from "antd";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import Sider from "antd/es/layout/Sider";
+import { Layout } from "antd";
+import { Route, Routes } from "react-router-dom";
 import AdminSider from "./AdminSider";
+import { Box } from "@chakra-ui/react";
+import Billing from "./billing";
 const Admin = () => {
-  const menuItems = [
-    {
-      label: "Products Dashboard",
-      path: "/admin/ProductsDashboard",
-    },
-    // Add more menu items as needed
-  ];
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <AdminSider />
       <Layout>
+        <Box>
+          <>
+            <Billing />
+          </>
+        </Box>
         <Routes>
-          <Route
-            path="/admin/ProductsDashboard"
-            element={<ProductsDashboard />}
-          />
-          {/* Add more routes for other components */}
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/Homepage" element={<ProductsDashboard />} />
         </Routes>
       </Layout>
     </Layout>

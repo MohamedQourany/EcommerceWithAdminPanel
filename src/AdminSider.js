@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 const AdminSider = () => {
   const menuItems = [
     {
-      label: "Products Dashboard",
-      path: "/admin/ProductsDashboard",
+      label: "Billing",
+      path: "/admin/",
     },
     {
-      label: "Homepage Content",
-      path: "/admin/HomepageContent",
+      label: "Products Dashboard",
+      path: "/admin/ProductsDashboard",
     },
   ];
 

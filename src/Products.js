@@ -173,7 +173,7 @@ const ProductsDashboard = () => {
     },
   ];
   return (
-    <Layout direction={"row"}>
+    <Layout>
       <AdminSider />
       <Flex direction={"column"}>
         <Box bg={"whiteAlpha.500"} border={"wheat"} padding={5}>
