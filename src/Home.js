@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { db } from "./firebase";
 import "./App.css";
 import {
-  Button,
   Col,
   Form,
   Image,
@@ -40,6 +39,7 @@ import {
   SimpleGrid,
   Container,
   Icon,
+  Button,
 } from "@chakra-ui/react";
 import { DottedBox } from "./Icons";
 import { Hero } from "./Hero";
@@ -57,9 +57,19 @@ const Home = () => {
     setProducts(productsData);
     setLoading(false);
   };
-
+  const [Hero, setHero] = useState();
+  const getHero = async () => {
+    const querySnapshot = await getDocs(query(collection(db, "Content")));
+    const HeroData = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setHero(HeroData);
+    setLoading(false);
+  };
   useEffect(() => {
     getProducts();
+    getHero();
   }, []);
   const addToCart = (product) => {
     dispatch(addItem(product));
@@ -161,8 +171,33 @@ const Home = () => {
   return (
     <Layout className="hero">
       {!loading ? (
-        <Content>
-          <Hero />
+        <Flex direction={"column"} align={"center"}>
+          <Box mt={20}>
+            {Hero?.map((item) => (
+              <Flex
+                width={"100vw"}
+                direction={"row"}
+                justify={"space-evenly"}
+                align={"center"}
+              >
+                <Flex direction={"column"} width={600}>
+                  <Typography.Title>{item?.Title}</Typography.Title>
+                  <Typography.Text>{item?.Desc}</Typography.Text>
+                  <Button
+                    width={150}
+                    alignSelf={"center"}
+                    type={"submit"}
+                    color={"ActiveCaption"}
+                    bg={"blue.500"}
+                    mt={5}
+                  >
+                    <Link to={"/Shop"}>Shop Now</Link>
+                  </Button>
+                </Flex>
+                <Image src={item?.HeroBg} preview={false} height={400} />
+              </Flex>
+            ))}
+          </Box>
           <Divider mt={20} mb={20} />
           <Flex
             direction={"column"}
@@ -200,7 +235,7 @@ const Home = () => {
             </Flex>
           </Flex>
           <Divider mt={50} mb={50} />
-        </Content>
+        </Flex>
       ) : (
         <Flex
           width={"100%"}

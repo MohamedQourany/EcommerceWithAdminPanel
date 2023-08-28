@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import { Layout, Space } from "antd";
 import Error from "./Error";
 import Navigation from "./navigation";
+import ProductsDashboard from "./Products";
 function App() {
   const User = localStorage.getItem("user");
   return (
@@ -18,7 +19,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             {User === "admin@ecommerce.com" ? (
-              <Route path="/admin" element={<Admin />} />
+              <>
+                <Route path="/admin" element={<Admin />} />
+                <Route
+                  path="/admin/ProductsDashboard"
+                  element={<ProductsDashboard />}
+                />
+              </>
             ) : (
               <Route path="/admin" element={<Error />} />
             )}
