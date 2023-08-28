@@ -17,15 +17,15 @@ const cartSlice = createSlice({
 
       if (!product) {
         const { id, productName, price, image } = action.payload;
-        state.cart.push({ id, productName, price, quantity: 1, image }); // Add quantity property
+        state.cart.push({ id, productName, price, quantity: 1, image });
       } else {
-        product.quantity++; // Increase quantity if the item is already in the cart
+        product.quantity++;
       }
     },
     increaseQ: (state, action) => {
       const product = state.cart.find((item) => item.id === action.payload);
       if (product) {
-        product.quantity += 1; // Increase the quantity for the specific item
+        product.quantity += 1;
       }
     },
     removeFromCart: (state, action) => {
@@ -40,7 +40,6 @@ const cartSlice = createSlice({
         state.cart = state.cart.filter((item) => item.id !== action.payload);
       }
     },
-    // Inside the calculateTotal action
     calculateTotal: (state) => {
       state.total = state.cart.reduce(
         (total, item) => total + item.price * item.quantity,

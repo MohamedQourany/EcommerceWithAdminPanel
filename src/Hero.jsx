@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import Typography from "antd/es/typography/Typography";
 import { FaArrowRight } from "react-icons/fa";
-import Carousel from "./Slider";
 
 export const Hero = () => (
   <Box

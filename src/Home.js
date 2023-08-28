@@ -1,8 +1,7 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { auth, db, provider } from "./firebase";
+import { db } from "./firebase";
 import "./App.css";
-import { AiFillCheckCircle } from "react-icons/ai";
 import {
   Button,
   Col,
@@ -24,7 +23,7 @@ import {
   increaseQ,
   removeFromCart,
 } from "./CounterSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Content } from "antd/es/layout/layout";
 import {
