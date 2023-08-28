@@ -10,10 +10,8 @@ const Admin = () => {
     <Layout style={{ minHeight: "100vh" }}>
       <AdminSider />
       <Layout>
-        <Box>
-          <>
-            <Billing />
-          </>
+        <Box padding={10}>
+          <Billing />
         </Box>
         <Routes>
           <Route path="/admin" element={<Admin />} />
