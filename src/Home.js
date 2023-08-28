@@ -43,6 +43,9 @@ import {
 } from "@chakra-ui/react";
 import { DottedBox } from "./Icons";
 import { Hero } from "./Hero";
+import Testimonialsection from "./Testmonials";
+import Testimonial from "./Testmonials";
+import Rating from "./Rating";
 const Home = () => {
   const [products, setProducts] = useState();
   const dispatch = useDispatch();
@@ -246,6 +249,8 @@ const Home = () => {
           <Spin />
         </Flex>
       )}
+      <Testimonial />
+      <Rating />
     </Layout>
   );
 };

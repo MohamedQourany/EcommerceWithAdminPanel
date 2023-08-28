@@ -9,6 +9,10 @@ import { Layout, Space } from "antd";
 import Error from "./Error";
 import Navigation from "./navigation";
 import ProductsDashboard from "./Products";
+import Footer from "./Footer";
+import Shop from "./Shop";
+import CheckoutForm from "./Checkout";
+import Success from "./Success";
 function App() {
   const User = localStorage.getItem("user");
   return (
@@ -29,9 +33,13 @@ function App() {
             ) : (
               <Route path="/admin" element={<Error />} />
             )}
+            <Route path="/Shop" element={<Shop />} />
+            <Route path="/Checkout" element={<CheckoutForm />} />
+            <Route path="/Success" element={<Success />} />
           </Routes>
         </BrowserRouter>
       </Layout>
+      <Footer />
     </Space>
   );
 }

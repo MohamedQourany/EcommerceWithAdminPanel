@@ -29,7 +29,7 @@ import {
 
 import { auth } from "./firebase";
 import { Header } from "antd/es/layout/layout";
-import { Divider, Flex } from "@chakra-ui/react";
+import { Box, Divider, Flex, Stack } from "@chakra-ui/react";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -89,7 +89,6 @@ const Navbar = () => {
     }
     window.location.reload();
   };
-  // Function to send password reset email
   const sendPasswordReset = async (email) => {
     try {
       await sendPasswordResetEmail(auth, email);
@@ -99,7 +98,6 @@ const Navbar = () => {
     }
   };
 
-  // Function to handle password reset
   const handlePasswordReset = async () => {
     if (!email) {
       message.error("Please provide your registered email.");
@@ -255,7 +253,7 @@ const Navbar = () => {
             {renderPasswordResetLink}
           </Form>
         </Modal>
-        <Modal open={isModalOpen} onOk={handleOk}>
+        <Modal open={isModalOpen} footer>
           <Typography.Title level={4}>Total is : {total} EGP</Typography.Title>
           <Divider mt={10} mb={10} />
           <Flex direction={"column"} justifyItems={"center"}>
@@ -287,6 +285,12 @@ const Navbar = () => {
               </Flex>
             ))}
           </Flex>
+          <Stack spacing={1} flexDirection={"row"}>
+            <Link to={"/Checkout"}>
+              <Button onClick={handleOk}>Checkout</Button>
+            </Link>
+            <Button onClick={handleOk}>Continue Shopping</Button>
+          </Stack>
         </Modal>
       </Flex>
       <Divider />
