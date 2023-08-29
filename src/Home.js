@@ -100,7 +100,7 @@ const Home = () => {
                 mt={"100px"}
               >
                 <Typography.Title level={2}>Brands</Typography.Title>
-                <Flex flexDirection={"row"}>
+                <Flex flexDirection={"row"} wrap="wrap">
                   <Image
                     maxW={"sm"}
                     src="https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png"
