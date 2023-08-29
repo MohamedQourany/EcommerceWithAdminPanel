@@ -253,7 +253,7 @@ const Navbar = () => {
             {renderPasswordResetLink}
           </Form>
         </Modal>
-        <Modal open={isModalOpen} footer>
+        <Modal open={isModalOpen} footer onCancel={handleOk}>
           <Typography.Title level={4}>Total is : {total} EGP</Typography.Title>
           <Divider mt={10} mb={10} />
           <Flex direction={"column"} justifyItems={"center"}>
