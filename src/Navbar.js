@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppstoreOutlined, ShopOutlined } from "@ant-design/icons";
 import "./App.css";
 import {
@@ -28,8 +28,7 @@ import {
 } from "firebase/auth";
 
 import { auth } from "./firebase";
-import { Header } from "antd/es/layout/layout";
-import { Box, Divider, Flex, Stack } from "@chakra-ui/react";
+import { Divider, Flex, Stack } from "@chakra-ui/react";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -155,6 +154,7 @@ const Navbar = () => {
     }
     return <Button onClick={LoginModalOpen}>Login</Button>;
   };
+  const [searchValue, SetSearchValue] = useState("");
   const items = [
     {
       label: <Link to={"/shop"}>Shop</Link>,
@@ -215,7 +215,6 @@ const Navbar = () => {
               ))}
             </Menu>
           </Drawer>
-          <Input.Search className="search" placeholder="Search for Products" />
           <Menu
             className="menu"
             mode="horizontal"

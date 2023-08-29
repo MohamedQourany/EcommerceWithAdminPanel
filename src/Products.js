@@ -39,6 +39,7 @@ const ProductsDashboard = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [editedProduct, setEditedProduct] = useState({});
+  const [brand, setBrand] = useState("");
   const openEditModal = (record) => {
     setEditModalVisible(true);
     setEditedProduct(record);
@@ -52,6 +53,7 @@ const ProductsDashboard = () => {
         image: image,
         description: description,
         Tag: Tag,
+        brand: brand,
       });
       message.success("Product added successfully!");
       getProducts();
@@ -84,6 +86,7 @@ const ProductsDashboard = () => {
         image: editedProduct.image,
         description: editedProduct.description,
         Tag: editedTag,
+        brand: EditedBrand,
       });
       message.success("Product updated successfully!");
       setEditModalVisible(false);
@@ -138,7 +141,7 @@ const ProductsDashboard = () => {
   useEffect(() => {
     getProducts();
   }, []);
-
+  const [EditedBrand, setEditedBrand] = useState();
   const ref = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -250,6 +253,14 @@ const ProductsDashboard = () => {
                       onChange={(e) => setTag(e.target.value)}
                     />
                   </Form.Item>
+                  <Form.Item>
+                    <Input
+                      required
+                      type="text"
+                      placeholder="Product Brand"
+                      onChange={(e) => setBrand(e.target.value)}
+                    />
+                  </Form.Item>
                 </Row>
                 <Col>
                   <Button onClick={addDocument}>Add Product</Button>
@@ -313,6 +324,9 @@ const ProductsDashboard = () => {
                   value={editedTag}
                   onChange={(e) => setEditedTag(e.target.value)}
                 />
+              </Form.Item>
+              <Form.Item label="Brand">
+                <Input onChange={(e) => setEditedBrand(e.target.value)} />
               </Form.Item>
             </Form>
           </Modal>
