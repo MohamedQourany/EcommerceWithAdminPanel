@@ -47,7 +47,7 @@ const ratingSummary = [
 
 const Rating = () => {
   return (
-    <Container maxW="5xl" p={{ base: 5, md: 10 }}>
+    <Container maxW="5xl" bg={"gray.200"} mt={10} p={{ base: 5, md: 10 }}>
       <Box mb={8}>
         <Heading as="h3" size="lg" fontWeight="bold" textAlign="left" mb={3}>
           Audience rating summary

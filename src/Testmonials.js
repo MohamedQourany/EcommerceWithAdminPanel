@@ -23,7 +23,7 @@ const testimonial = {
 
 const Testimonial = () => {
   return (
-    <Container maxW="2xl" p={5}>
+    <Container maxW="2xl" bg={"gray.100"} p={5}>
       <DottedBox />
       <VStack spacing={3}>
         <Icon

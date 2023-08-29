@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { Divider, Form, Space, Table, Typography } from "antd";
 import useSelection from "antd/es/table/hooks/useSelection";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { increaseQ } from "./CounterSlice";
 import Functions from "./Functions";
@@ -25,9 +25,14 @@ const Checkout = () => {
   const { removeFromCartHandler, increaseItem, decreaseItem, total } =
     Functions();
   const cart = useSelector((state) => state.cart);
-
+  const cvvRef = useRef(null);
   const [cc, setCC] = useState();
   const [ccName, setCCname] = useState();
+  const [cvv, setCvv] = useState();
+  let data;
+  const saveData = () => {
+    let data = [cc, ccName];
+  };
   return (
     <Stack border={"2px"} borderColor={"whiteAlpha.100"} bg={"whatsapp.100"}>
       <Stack pt={10} align={"center"} bg={"white"}>
@@ -95,16 +100,13 @@ const Checkout = () => {
                 Total is : {total} EGP
               </Typography.Title>
               <Box position={"relative"}>
-                <Image
-                  src="https://signetlondon.com/cdn/shop/products/Signet-Black_c8307df4-8703-4c46-a4d9-66851f636826_1024x.png?v=1662560505"
-                  w={"sm"}
-                />
+                <Image src="/frontcard.png" w={"sm"} />
                 <Text
                   position={"absolute"}
-                  bottom={10}
-                  left={6}
+                  bottom={9}
+                  left={10}
                   color={"white"}
-                  fontSize={"xl"}
+                  fontSize={"md"}
                   letterSpacing={10}
                 >
                   {cc}
@@ -122,10 +124,11 @@ const Checkout = () => {
                 </Text>
                 <Text
                   position={"absolute"}
-                  bottom={2}
-                  left={6}
+                  bottom={3}
+                  left={12}
                   color={"white"}
                   fontSize={"xl"}
+                  fontWeight={"extrabold"}
                   letterSpacing={5}
                 >
                   {ccName}
@@ -148,7 +151,12 @@ const Checkout = () => {
                 />
                 <Flex flexDirection={"row"} mt={2} align={"center"}>
                   {" "}
-                  <Input placeholder="CVV" width={"sm"} maxLength={3} />
+                  <Input
+                    placeholder="CVV"
+                    onChange={(e) => setCvv(e.target.value)}
+                    width={"sm"}
+                    maxLength={3}
+                  />
                   <Input type="date" ml={2} />
                 </Flex>
               </Flex>

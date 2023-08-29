@@ -5,7 +5,6 @@ import "./App.css";
 import {
   Col,
   Form,
-  Image,
   Input,
   Layout,
   Modal,
@@ -32,6 +31,7 @@ import {
   Flex,
   HStack,
   Stack,
+  Image,
   Divider,
   Card,
   CardHeader,
@@ -41,12 +41,12 @@ import {
   Container,
   Icon,
   Button,
+  VStack,
+  Center,
 } from "@chakra-ui/react";
-import { DottedBox } from "./Icons";
-import { Hero } from "./Hero";
-import Testimonialsection from "./Testmonials";
 import Testimonial from "./Testmonials";
 import Rating from "./Rating";
+import CarouselSlider from "./Carousel";
 const Home = () => {
   const [products, setProducts] = useState();
   const dispatch = useDispatch();
@@ -80,131 +80,38 @@ const Home = () => {
     dispatch(calculateTotal());
     message?.success(product?.productName + " is Added to cart");
   };
-  const features = [
-    {
-      heading: "Easy Payment",
-      content: "Choose from PayPal,Cash On Delivery,Visa.",
-      icon: (
-        <svg
-          width={36}
-          height={36}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-          ></path>
-        </svg>
-      ),
-    },
-    {
-      heading: "Invoicing",
-      content: "Automatically email customers PDF receipts and invoices.",
-      icon: (
-        <svg
-          width={36}
-          height={36}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-          ></path>
-        </svg>
-      ),
-    },
-    {
-      heading: "Cashback Offers",
-      content: "Cashback Offers Every Thursday.",
-      icon: (
-        <svg
-          width={36}
-          height={36}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-          ></path>
-        </svg>
-      ),
-    },
-  ];
-  const statData = [
-    {
-      label: "Weekly downloads",
-      score: "3.2M",
-    },
-    {
-      label: "Stars on GitHub",
-      score: "77k",
-    },
-    {
-      label: "Contributors",
-      score: "2.4k",
-    },
-    {
-      label: "Followers on Twitter",
-      score: "17k",
-    },
-  ];
-
-  const planList = [
-    "Customer obsessed. We put our customers front & center.",
-    "Transparency. Most of our work is public.",
-    "Freedom. We work from anywhere in the world.",
-    "Autonomy. We want to create a safe, high-trust team.",
-    "Excellence. We are aiming high, and we know it.",
-  ];
-
   const [loading, setLoading] = useState(true);
   return (
-    <Layout className="hero">
+    <>
       {!loading ? (
-        <>
-          <Flex direction={"column"} align={"center"}>
-            <Flex mt={20}>
-              {Hero?.map((item) => (
-                <Flex
-                  width={"100vw"}
-                  direction={"row"}
-                  justify={"space-evenly"}
-                  align={"center"}
-                  wrap={"wrap"}
-                >
-                  <Flex direction={"column"} width={600}>
-                    <Typography.Title>{item?.Title}</Typography.Title>
-                    <Typography.Text>{item?.Desc}</Typography.Text>
-                    <Button
-                      width={150}
-                      alignSelf={"center"}
-                      type={"submit"}
-                      color={"ActiveCaption"}
-                      bg={"blue.500"}
-                      mt={5}
-                    >
-                      <Link to={"/Shop"}>Shop Now</Link>
-                    </Button>
-                  </Flex>
-                  <Image src={item?.HeroBg} preview={false} height={400} />
+        <Layout>
+          <Flex direction={"column"} bg={"white"}>
+            <Container maxW={"container.xl"}>
+              <Box flexDirection={"row"}>
+                <CarouselSlider />
+              </Box>
+              <Divider bg={"black"} mt={10} />
+              <Card
+                bg={"gray.100"}
+                p={20}
+                justify={"center"}
+                align={"center"}
+                flexDirection={"column"}
+                mt={"100px"}
+              >
+                <Typography.Title level={2}>Brands</Typography.Title>
+                <Flex flexDirection={"row"}>
+                  <Image
+                    maxW={"sm"}
+                    src="https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png"
+                  />
+                  <Image
+                    maxW={"sm"}
+                    src="https://logos-world.net/wp-content/uploads/2020/04/Samsung-Logo-2005-present.jpg"
+                  />
                 </Flex>
-              ))}
-            </Flex>
+              </Card>
+            </Container>
             <Divider mt={20} mb={20} />
             <Flex
               direction={"column"}
@@ -245,7 +152,7 @@ const Home = () => {
           </Flex>
           <Testimonial />
           <Rating />
-        </>
+        </Layout>
       ) : (
         <Flex
           width={"100%"}
@@ -256,7 +163,7 @@ const Home = () => {
           <Spin />
         </Flex>
       )}
-    </Layout>
+    </>
   );
 };
 
